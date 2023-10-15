@@ -44,6 +44,7 @@ jobs:
         remove-android: 'true'
         remove-dotnet: 'true'
         remove-haskell: 'true'
+        
     - name: Checkout
       uses: actions/checkout@main
 
@@ -59,6 +60,13 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
+    - name: Maximize build space
+      uses: AdityaGarg8/remove-unwanted-software@v1
+      with:
+        remove-android: 'true'
+        remove-dotnet: 'true'
+        remove-haskell: 'true'
 
     - name: Clone source code
       working-directory: /workdir
